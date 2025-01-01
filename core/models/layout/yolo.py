@@ -41,6 +41,7 @@ class YOLOLayout(Layout):
             )
             type = det_res.names[int(box.cls)]
             if type not in abandon_block:
-                block = TextBlock(x0, int(y0 - 1), x1, int(y1 + 1), six_y0, six_y1, type)
+                block = TextBlock(x0=x0, y0=int(y0 - 1), x1=x1, y1=int(y1 + 1), six_y0=six_y0, six_y1=six_y1,
+                                  type=type, is_bold='title' in type or 'caption' in type)
                 text_blocks.append(block)
         return text_blocks

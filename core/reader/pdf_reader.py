@@ -26,7 +26,7 @@ class PdfTextReader(BaseReader):
     def read(self) -> List[ReaderResult]:
         result = []
         for page_no, page in enumerate(PDFPage.get_pages(self.file)):
-            result.append(ReaderResult(page_no, self.read_from_page(page_no, page)))
+            result.append(ReaderResult(page_no=page_no, text_blocks=self.read_from_page(page_no, page)))
         return result
 
     def __init__(self, file):
@@ -80,7 +80,7 @@ class PdfOcrReader(BaseReader):
     def read(self) -> List[ReaderResult]:
         result = []
         for page_no, page in enumerate(PDFPage.get_pages(self.file)):
-            result.append(ReaderResult(page_no, self.read_from_page(page_no, page)))
+            result.append(ReaderResult(page_no=page_no, text_blocks=self.read_from_page(page_no, page)))
         return result
 
     def __init__(self, file):
